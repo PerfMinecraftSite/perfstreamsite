@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ИНСТРУКЦИЯ: Текст ниже отображается на вкладке браузера -->
+    <title>Perf.Server — Главная</title>
+    
+    <!-- Подключаем шрифты: пиксельный для заголовков и ровный для обычного текста -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Подключаем наш отдельный файл со стилями -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==================== 1. ВЕРХНЯЯ ШАПКА САЙТА ==================== -->
+    <header class="top-header">
+        <!-- Левая часть шапки: Название сервера -->
+        <a href="index.html" class="logo">
+            Perf<span>.Server</span>
+        </a>
+
+        <!-- Правая часть шапки: Кнопки навигации (как на твоем рисунке) -->
+        <nav class="top-nav">
+            <!-- Чтобы сделать кнопку "активной" (с зеленой рамкой), добавь ей класс active -->
+            <a href="#" class="nav-btn">Предложка (в разработке)</a>
+            <a href="seasons.html" class="nav-btn ">Прошлые сезоны</a>
+            <a href="index.html" class="nav-btn active">Главная</a>
+        </nav>
+    </header>
+
+    <!-- ==================== 2. ОСНОВНАЯ ЧАСТЬ (3 КОЛОНКИ) ==================== -->
+    <main class="main-grid">
+
+        <!-- ---------- ЛЕВАЯ КОЛОНКА (Меню и инфа) ---------- -->
+        <aside class="left-sidebar">
+            
+            <!-- Блок 1: IP сервера (нажми на него, чтобы скопировать) -->
+            <div class="side-box ip-box" onclick="copyIP()" title="Нажми, чтобы скопировать IP">
+                <span class="box-label">IP СЕРВЕРА (нажми):</span>
+                <!-- ИНСТРУКЦИЯ: Меняй IP-адрес сервера прямо здесь -->
+                <strong class="green-text" id="server-ip">213.152.43.73:25671</strong>
+                <span class="copy-status" id="copy-msg">Скопировано!</span>
+            </div>
+
+            <!-- Блок 2: Версия Майнкрафта -->
+            <div class="side-box">
+                <span class="box-label">ВЕРСИЯ МАЙНКРАФТА:</span>
+                <!-- ИНСТРУКЦИЯ: Меняй версию и ядро здесь -->
+                <strong class="green-text">1.20.1 Forge</strong>
+            </div>
+
+            <!-- Блок 3: Кнопка МОДЫ -->
+            <!-- ИНСТРУКЦИЯ: Вместо # потом впишем ссылку на страницу модов, например mods.html -->
+            <!-- Блок 3: Кнопка МОДЫ -->
+<a href="mods.html" class="side-box side-link big-link">
+    Моды
+</a>
+
+            <!-- Блок 4: Галерея сервера -->
+<a href="gallery.html" class="side-box side-link">
+    Галерея сервера
+</a>
+
+            <!-- Блок 5: Информация о текущем сезоне -->
+           <a href="season-info.html" class="side-box side-link">
+                Информация о текущем сезоне
+            </a>
+
+        </aside>
+
+        <!-- ---------- ЦЕНТРАЛЬНАЯ КОЛОНКА (Главный баннер) ---------- -->
+        <section class="center-hero">
+            <div class="hero-content">
+                <!-- ИНСТРУКЦИЯ: Главный заголовок и подзаголовок по центру -->
+                <h1>Добро пожаловать</h1>
+                <p>На сайт сервера подписчиков</p>
+            </div>
+        </section>
+
+        <!-- ---------- ПРАВАЯ КОЛОНКА (Последние новости) ---------- -->
+        <aside class="right-sidebar">
+            <div class="news-header">
+                Последние новости
+            </div>
+
+            <!-- ИНСТРУКЦИЯ: Каждая новость — это блок <div class="news-item">. 
+                 Чтобы добавить новую новость, просто скопируй один такой блок и вставь сверху! -->
+            <div class="news-list">
+                
+
+
+                <div class="news-item">
+                    <span class="news-date">24.11.2026</span>
+                    <p>Я наконец то закончил писать этот сайт</p>
+                </div>
+
+             
+
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- ==================== 3. НИЖНИЙ ПОДВАЛ (ФУТЕР) ==================== -->
+    <footer class="bottom-footer">
+        Perf Project
+    </footer>
+
+    <!-- Небольшой скрипт для работы кнопки копирования IP -->
+    <script>
+        function copyIP() {
+            const ipText = document.getElementById('server-ip').innerText;
+            navigator.clipboard.writeText(ipText);
+            
+            const msg = document.getElementById('copy-msg');
+            msg.style.opacity = '1';
+            setTimeout(() => {
+                msg.style.opacity = '0';
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>

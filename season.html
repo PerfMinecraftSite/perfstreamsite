@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ИНСТРУКЦИЯ: Заголовок вкладки браузера -->
+    <title>Perf.Server — Сезон</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Подключаем общий файл стилей -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==================== 1. ВЕРХНЯЯ ШАПКА САЙТА ==================== -->
+    <header class="top-header">
+        <a href="index.html" class="logo">
+            Perf<span>.Server</span>
+        </a>
+
+        <nav class="top-nav">
+            <a href="#" class="nav-btn">Предложка (в разработке)</a>
+            <a href="seasons.html" class="nav-btn active">Прошлые сезоны</a>
+            <a href="index.html" class="nav-btn">Главная</a>
+        </nav>
+    </header>
+
+    <!-- ==================== 2. СТРАНИЦА СЕЗОНА (ФОТО + ТЕКСТ ВНИЗ) ==================== -->
+    <main class="season-detail-page">
+        
+        <div class="season-container">
+
+            <!-- Верхняя строка: плашка с названием сезона слева и кнопка возврата -->
+            <div class="season-top-bar">
+                <div class="season-badge" id="season-badge">1 сезон</div>
+                <a href="seasons.html" class="back-seasons-btn">&larr; Все сезоны</a>
+            </div>
+
+            <!-- Блок с ФОТО слева и ТЕКСТОМ справа + снизу -->
+            <article class="season-story-box">
+                
+                <!-- ИНСТРУКЦИЯ: Фотография сезона (клик открывает её на весь экран) -->
+                <div class="season-photo-frame" onclick="openSeasonFullscreen()" title="Нажми, чтобы открыть на весь экран">
+                    <img id="season-photo" src="avanpost.jpg" alt="Фото сезона">
+                </div>
+
+                <!-- ИНСТРУКЦИЯ: Весь текст и ники игроков выводятся сюда прямо из описания -->
+                <div class="season-text" id="season-text"></div>
+
+            </article>
+
+        </div>
+
+    </main>
+
+    <!-- ==================== 3. ФУЛЛСКРИН ДЛЯ ФОТО СЕЗОНА ==================== -->
+    <div class="lightbox" id="season-lightbox" onclick="closeSeasonFullscreen(event)">
+        <span class="lightbox-close" onclick="forceCloseSeasonFullscreen()" title="Закрыть (Esc)">&times;</span>
+        <img class="lightbox-img" id="season-lightbox-img" src="" alt="Полный экран">
+    </div>
+
+    <!-- ==================== 4. НИЖНИЙ ПОДВАЛ ==================== -->
+    <footer class="bottom-footer">
+        Perf Project
+    </footer>
+
+    <!-- =====================================================================
+         ДАННЫЕ СЕЗОНОВ
+         ИНСТРУКЦИЯ:
+         - title: название плашки сверху слева (например, "1 сезон")
+         - photo: имя файла картинки из папки сайта (например, "dom1.jpg")
+         - paragraphs: описание сезона. Каждая строчка в кавычках — это отдельный абзац с новой строки.
+           ВАЖНО: после каждой строчки внутри квадратных скобок [ ... ], кроме самой последней,
+           обязательно должна стоять запятая!
+           Чтобы добавить ники игроков на каждой новой строчке — пиши их через <br>
+         ===================================================================== -->
+    <script>
+        const SEASONS_DATA = {
+            "1": {
+                title: "1 сезон",
+                photo: "1season.jpg",
+                paragraphs: [
+                    "25 окт. - 14 ноя. 2026г.",
+                    "Всё началось с чистого листа и больших амбиций. Из первых землянок и деревянных построек постепенно вырос Перфленд — наш общий дом, сердце сервера и символ того, что мы построили своими руками.",
+                    "Жизнь в городе быстро обрела свои законы и порядки. У руля встал первый президент Wefflyy, взявший на себя управление и развитие столицы, а за справедливостью и порядком следил неподкупный судья Pushkin, чьи вердикты решали судьбы игроков и разрешали самые громкие споры. Казалось, золотой век Перфленда будет длиться вечно.",
+                    "Но у любой истории есть своя тёмная глава. Мирные будни сменились чередой загадочных и дерзких преступлений: город охватили массовые поджоги. Дома вспыхивали один за другим, оставляя после себя лишь пепел и тревогу. За этим хаосом стоял Kaki, чьи огненные выходки навсегда изменили облик столицы и стали главным испытанием для власти и жителей.",
+                    "Первый сезон подошёл к концу так, как и должен заканчиваться настоящий эпос — тихо и меланхолично. Под шум проливного дождя, смывающего пепел со старых улиц Перфленда, мы простились с этим миром, оставив в нём частичку себя и десятки историй, которые мы будем вспоминать ещё долго.",
+                    "Игроки сезона:<br>PlayerTwo<br>RedstoneMaster"
+                ]
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const seasonKey = params.get("s") || "1";
+        const currentSeason = SEASONS_DATA[seasonKey] || SEASONS_DATA["1"];
+
+        document.title = "Perf.Server — " + currentSeason.title;
+        document.getElementById("season-badge").innerText = currentSeason.title;
+
+        const photoEl = document.getElementById("season-photo");
+        photoEl.src = currentSeason.photo;
+        photoEl.alt = currentSeason.title;
+
+        const textContainer = document.getElementById("season-text");
+        textContainer.innerHTML = currentSeason.paragraphs
+            .map(text => "<p>" + text + "</p>")
+            .join("");
+
+        function openSeasonFullscreen() {
+            document.getElementById("season-lightbox-img").src = photoEl.src;
+            document.getElementById("season-lightbox").classList.add("open");
+        }
+
+        function closeSeasonFullscreen(event) {
+            if (event.target.id === "season-lightbox") {
+                forceCloseSeasonFullscreen();
+            }
+        }
+
+        function forceCloseSeasonFullscreen() {
+            document.getElementById("season-lightbox").classList.remove("open");
+        }
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                forceCloseSeasonFullscreen();
+            }
+        });
+    </script>
+
+</body>
+</html>

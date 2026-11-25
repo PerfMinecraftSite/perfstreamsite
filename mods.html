@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ИНСТРУКЦИЯ: Заголовок вкладки браузера -->
+    <title>Perf.Server — Моды</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Подключаем тот же самый файл стилей -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==================== 1. ВЕРХНЯЯ ШАПКА САЙТА ==================== -->
+    <header class="top-header">
+        <a href="index.html" class="logo">
+            Perf<span>.Server</span>
+        </a>
+
+        <!-- Правая часть шапки: Кнопки навигации (как на твоем рисунке) -->
+        <nav class="top-nav">
+            <!-- Чтобы сделать кнопку "активной" (с зеленой рамкой), добавь ей класс active -->
+            <a href="#" class="nav-btn">Предложка (в разработке)</a>
+            <a href="seasons.html" class="nav-btn">Прошлые сезоны</a>
+            <a href="index.html" class="nav-btn ">Главная</a>
+        </nav>
+    </header>
+
+    <!-- ==================== 2. ОСНОВНАЯ ЧАСТЬ ==================== -->
+    <!-- ИНСТРУКЦИЯ: Класс mods-layout включает отдельный фон для страницы модов и убирает правую колонку новостей -->
+    <main class="main-grid mods-layout">
+
+        <!-- ---------- ЛЕВАЯ КОЛОНКА ---------- -->
+        <aside class="left-sidebar">
+            
+            <!-- Блок 1: IP сервера -->
+            <div class="side-box ip-box" onclick="copyIP()" title="Нажми, чтобы скопировать IP">
+                <span class="box-label">IP СЕРВЕРА (нажми):</span>
+                <strong class="green-text" id="server-ip">213.152.43.73:25671</strong>
+                <span class="copy-status" id="copy-msg">Скопировано!</span>
+            </div>
+
+            <!-- Блок 2: Версия Майнкрафта -->
+            <div class="side-box">
+                <span class="box-label">ВЕРСИЯ МАЙНКРАФТА:</span>
+                <strong class="green-text">1.20.1 Forge</strong>
+            </div>
+
+            <!-- Блок 3: Кнопка МОДЫ (подсвечена как активная) -->
+            <a href="mods.html" class="side-box side-link big-link active-side">
+                Моды
+            </a>
+
+            <!-- Блок 4: Галерея сервера -->
+            <!-- Блок 4: Галерея сервера -->
+<a href="gallery.html" class="side-box side-link">
+    Галерея сервера
+</a>
+
+            <!-- Блок 5: Информация о текущем сезоне -->
+           <a href="season-info.html" class="side-box side-link">
+                Информация о текущем сезоне
+            </a>
+
+        </aside>
+
+        <!-- ---------- ЦЕНТРАЛЬНАЯ КАРТОЧКА СКАЧИВАНИЯ ---------- -->
+        <section class="mods-section">
+            <div class="mods-card">
+                
+                <!-- Верхний бейдж с версией -->
+                <span class="mods-badge">Сборка сезона • Forge 1.20.1</span>
+                
+                <!-- ИНСТРУКЦИЯ: Главный заголовок карточки -->
+                <h1>Сборка модов сервера</h1>
+                
+                <!-- ИНСТРУКЦИЯ: Описание под заголовком -->
+                <p class="mods-desc">
+                    Все необходимые моды для игры на сервере собраны в один архив. 
+                    Скачай его, распакуй и закинь файлы в папку игры.
+                </p>
+
+                <!-- ИНСТРУКЦИЯ: Кнопка скачивания.
+                     Вместо # внутри href="..." вставь свою ссылку на Яндекс Диск, Google Диск или DropMeFiles! -->
+                <a href="https://disk.yandex.ru/d/oZygzeXhoxH7SA" target="_blank" class="download-btn">
+                    Скачать архив с модами
+                </a>
+
+                <!-- Мини-инструкция по установке для игроков -->
+                <div class="install-guide">
+                    <h3>Как установить за 30 секунд:</h3>
+                    <ol>
+                        <li>Установи в лаунчере версию <span>1.20.1 Forge</span>.</li>
+                        <li>Открой корневую папку игры и найди папку <span>mods</span> (если её нет — создай).</li>
+                        <li>Распакуй скачанный архив и перекинь все <span>.jar</span> файлы в папку <span>mods</span>.</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== 3. НИЖНИЙ ПОДВАЛ ==================== -->
+    <footer class="bottom-footer">
+        Perf Project
+    </footer>
+
+    <!-- Скрипт копирования IP -->
+    <script>
+        function copyIP() {
+            const ipText = document.getElementById('server-ip').innerText;
+            navigator.clipboard.writeText(ipText);
+            
+            const msg = document.getElementById('copy-msg');
+            msg.style.opacity = '1';
+            setTimeout(() => {
+                msg.style.opacity = '0';
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>

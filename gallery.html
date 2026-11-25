@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ИНСТРУКЦИЯ: Заголовок вкладки браузера -->
+    <title>Perf.Server — Галерея</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Подключаем общий файл стилей -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==================== 1. ВЕРХНЯЯ ШАПКА САЙТА ==================== -->
+    <header class="top-header">
+        <a href="index.html" class="logo">
+            Perf<span>.Server</span>
+        </a>
+
+        <nav class="top-nav">
+            <a href="#" class="nav-btn">Предложка (в разработке)</a>
+            <a href="seasons.html" class="nav-btn ">Прошлые сезоны</a>
+            <a href="index.html" class="nav-btn">Главная</a>
+        </nav>
+    </header>
+
+    <!-- ==================== 2. ОСНОВНАЯ ЧАСТЬ ГАЛЕРЕИ ==================== -->
+    <main class="gallery-page">
+        
+        <h1 class="gallery-title">ГАЛЕРЕЯ</h1>
+
+        <!-- ИНСТРУКЦИЯ: Сетка карточек (по 3 в ряд).
+             Чтобы добавить новую картинку, просто скопируй один блок <div class="gallery-card">...</div>
+             и поменяй в нём путь к картинке (src="...") и текст в <p>...</p> -->
+        <div class="gallery-grid">
+
+            <!-- Карточка 1 -->
+            <div class="gallery-card" onclick="openFullscreen(this)">
+                <img src="avanpost.png" alt="Зимний аванпост">
+                <div class="gallery-caption">
+                    <p>Аванпост разбойников у заснеженного берега</p>
+                </div>
+            </div>
+<!-- Карточка 2 -->
+            <div class="gallery-card" onclick="openFullscreen(this)">
+                <img src="dom1.png" alt="Дом кристины">
+                <div class="gallery-caption">
+                    <p>Лачуга Кристины Зохан</p>
+                </div>
+            </div>
+            
+
+        </div>
+
+    </main>
+
+    <!-- ==================== 3. ОКНО ПОЛНОЭКРАННОГО ПРОСМОТРА (ФУЛЛСКРИН) ==================== -->
+    <div class="lightbox" id="lightbox" onclick="closeFullscreen(event)">
+        <span class="lightbox-close" onclick="forceCloseFullscreen()" title="Закрыть (Esc)">&times;</span>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="Полный экран">
+        <div class="lightbox-text" id="lightbox-text"></div>
+    </div>
+
+    <!-- ==================== 4. НИЖНИЙ ПОДВАЛ ==================== -->
+    <footer class="bottom-footer">
+        Perf Project
+    </footer>
+
+    <!-- Скрипт для открытия и закрытия фото на весь экран -->
+    <script>
+        function openFullscreen(card) {
+            const img = card.querySelector('img');
+            const text = card.querySelector('.gallery-caption p').innerText;
+
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxText = document.getElementById('lightbox-text');
+
+            lightboxImg.src = img.src;
+            lightboxText.innerText = text;
+            lightbox.classList.add('open');
+        }
+
+        function closeFullscreen(event) {
+            // Закрываем, только если кликнули по тёмному фону, а не по самой картинке
+            if (event.target.id === 'lightbox') {
+                forceCloseFullscreen();
+            }
+        }
+
+        function forceCloseFullscreen() {
+            document.getElementById('lightbox').classList.remove('open');
+        }
+
+        // Закрытие по нажатию клавиши Esc на клавиатуре
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                forceCloseFullscreen();
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ИНСТРУКЦИЯ: Заголовок вкладки браузера -->
+    <title>Perf.Server — Карта и лор сезона</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Подключаем общий файл стилей -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==================== 1. ВЕРХНЯЯ ШАПКА САЙТА ==================== -->
+    <header class="top-header">
+        <a href="index.html" class="logo">
+            Perf<span>.Server</span>
+        </a>
+
+        <nav class="top-nav">
+            <a href="#" class="nav-btn">Предложка (в разработке)</a>
+            <a href="seasons.html" class="nav-btn">Прошлые сезоны</a>
+            <a href="index.html" class="nav-btn">Главная</a>
+        </nav>
+    </header>
+
+    <!-- ==================== 2. ОСНОВНАЯ ЧАСТЬ (ИГРОКИ СЛЕВА + КАРТА И ЛОР СПРАВА) ==================== -->
+    <main class="season-map-layout">
+
+        <!-- ---------- ЛЕВАЯ КОЛОНКА: ИГРОКИ ТЕКУЩЕГО СЕЗОНА ---------- -->
+        <!-- ИНСТРУКЦИЯ: Каждая строчка внутри <ul class="season-players-rows"> — это один игрок.
+             Чтобы добавить нового игрока — скопируй одну строчку <li>...</li> и впиши нужный ник -->
+        <aside class="players-sidebar">
+            <div class="players-sidebar-header">
+                ИГРОКИ :
+            </div>
+
+            <ul class="season-players-rows">
+                <li class="player-row">shitsssuren</li>
+                <li class="player-row">shotoke2004</li>
+                <li class="player-row">hara_vod</li>
+                <li class="player-row">arzusexual</li>
+                <li class="player-row">bountyshy</li>
+                <li class="player-row">rodion7775</li>
+                <li class="player-row">ShyWhy</li>
+                <li class="player-row">perfpz</li>
+                <li class="player-row">pasyama</li>
+                <li class="player-row">spinax67</li>
+                <li class="player-row">dratytitiiii</li>
+                <li class="player-row">feox13</li>
+                <li class="player-row">Onyx</li>
+                <li class="player-row">loytabb</li>
+                <li class="player-row">Ronaldo_Roblox42</li>
+                <li class="player-row">flyz1ch</li>
+                <li class="player-row">3ohavh</li>
+                <li class="player-row">skys1edy</li>
+                <li class="player-row">emil_</li>
+                <li class="player-row">Pushkin3_EBLAN</li>
+                <li class="player-row">weweffllyy</li>
+                <li class="player-row">kaki10672</li>
+                <li class="player-row">zaxataku</li>
+                <li class="player-row">flyz333</li>
+            </ul>
+        </aside>
+
+        <!-- ---------- ПРАВАЯ ЧАСТЬ: ПАНЕЛЬ КАРТЫ + ЛОР СЕЗОНА ---------- -->
+        <section class="season-map-panel">
+
+            <!-- Верхняя панель над блоками -->
+            <div class="map-toolbar">
+                <div class="map-title-group">
+                    <span class="season-live-badge">КАРТА СЕЗОНА</span>
+                    <!-- ИНСТРУКЦИЯ: Укажи название карты или мира при необходимости -->
+                    <span class="map-subtitle">Dynmap — мир world</span>
+                </div>
+
+                <!-- ИНСТРУКЦИЯ: Ссылка на внешнее открытие карты Dynmap -->
+                <a href="http://ip-213-152-43-73.joinserver.xyz:25933/" target="_blank" rel="noopener noreferrer" class="map-external-btn">
+                    Открыть в новом окне &nearr;
+                </a>
+            </div>
+
+            <!-- Красивая панелька с кнопкой открытия карты -->
+            <div class="map-banner-card">
+                <div class="map-banner-info">
+                    <h1 class="map-banner-title">Интерактивная карта мира</h1>
+                    <p class="map-banner-desc">
+                        Смотри постройки, дороги, аванпосты и перемещения игроков на карте <code>world</code> в отдельном окне.
+                    </p>
+                </div>
+
+                <a
+                    href="http://ip-213-152-43-73.joinserver.xyz:25933/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="download-btn map-open-btn"
+                >
+                    Открыть карту
+                </a>
+            </div>
+
+            <!-- Блок с лором сезона ниже панели карты -->
+            <article class="season-lore-card">
+                <div class="season-lore-header">
+                    <span class="lore-tag">ЛОР СЕЗОНА</span>
+                    <h2>Хроники мира Perf.Server</h2>
+                </div>
+
+                <div class="season-lore-body">
+                    <!-- ИНСТРУКЦИЯ: Впиши сюда свой сюжет, историю мира, фракции или правила сезона -->
+                    <p>
+                        После долгих перемен мир снова открыл границы для новых поселенцев. В анархии нет безопасных стен по умолчанию — каждый клан, союз и одиночка сам решает, станет ли он торговцем на перекрёстках дорог или уйдёт в глухие земли.
+                    </p>
+                    <p>
+                        На карте уже появляются первые базы, руины и точки интереса. Исследуй мир, следи за обстановкой через карту Dynmap и пиши свою историю сезона.
+                    </p>
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- ==================== 3. НИЖНИЙ ПОДВАЛ ==================== -->
+    <footer class="bottom-footer">
+        Perf Project
+    </footer>
+
+</body>
+</html>
